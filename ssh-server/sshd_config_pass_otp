@@ -1,0 +1,6 @@
+# SSH server configuration for Password and OTP
+PermitRootLogin yes
+ChallengeResponseAuthentication yes
+UsePAM yes
+AuthenticationMethods password,keyboard-interactive
+PasswordAuthentication yes

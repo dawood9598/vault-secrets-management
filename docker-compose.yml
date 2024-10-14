@@ -1,0 +1,41 @@
+services:
+  vault:
+    build: ./vault  # Using the custom Dockerfile
+    container_name: vault
+    volumes:
+      - ./vault/config/vault.json:/vault/config/vault.json
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_ADDR: "http://0.0.0.0:8200"
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - vault-network
+
+  ssh-server:
+    build:
+      context: ./ssh-server
+    container_name: ssh-server
+    ports:
+      - "3015:22"
+    networks:
+      - vault-network
+ 
+  database:
+    build:
+      context: ./postgres
+    environment:
+      - POSTGRES_USER=root 
+      - POSTGRES_PASSWORD=rootpassword
+    ports:
+      - "5432:5432"
+    networks:
+      - vault-network
+
+networks:
+  vault-network:
+    driver: bridge
