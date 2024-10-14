@@ -18,11 +18,12 @@ docker-compose up -d --build
 
 To set up Vault, run the initialization script:
 ```
+cd vault
 sh setup_vault.sh
 ```
 
 This script performs the following steps:
-1. Initialize Vault and generate unseal keys and root token, storing them in /vault/init.file.
+1. Initialize Vault and generate unseal keys and root token, storing them in init.file.
 2. Unseal Vault using the generated unseal keys.
 3. Log into Vault with the root token.
 4. Enable the SSH secrets engine and configure One-Time Password (OTP) SSH authentication.
