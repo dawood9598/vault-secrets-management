@@ -21,6 +21,29 @@ Make sure you have the following installed:
 - Docker Compose
 - Vault CLI
 
+## Directory Structure
+```
+├── postgres/
+│   ├── Dockerfile
+│   └── init-db.sql # Contains the Docker setup and initialization scripts for PostgreSQL.
+├── ssh-server-otp-auth/
+│   ├── Dockerfile
+│   ├── config.hcl
+│   ├── sshd
+│   ├── sshd_config
+│   └── sshd_config_pass_otp .
+├── ssh-server-signed-cert-auth/
+│   ├── Dockerfile
+│   └── sshd_config # Sets up an SSH server with signed certificate authentication.
+├── vault/
+│   ├── config/
+│   │   └── vault.json
+│   ├── Dockerfile
+│   ├── setup_vault.sh 
+│   └── README.md # 
+└── docker-compose.yml # Orchestrates the multi-container Docker application setup.
+```
+
 ## Setting Up the Environment
 ```
 git clone https://github.com/dawood9598/vault-secrets-management
