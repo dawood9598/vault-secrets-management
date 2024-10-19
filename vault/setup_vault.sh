@@ -51,7 +51,7 @@ vault write database/roles/readonly \
 vault secrets enable -path=ssh-client-signer ssh
 
 # Configure the SSH secrets engine to generate a new signing key for the CA (Certificate Authority).
-# This key will be used by Vault to sign SSH client certificates.
+# This key will be used by Vault to sign public keys.
 # The key will be stored in Vault and used for authenticating SSH client sessions.
 vault write ssh-client-signer/config/ca generate_signing_key=true
 
