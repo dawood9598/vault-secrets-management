@@ -9,7 +9,7 @@ This project leverages **HashiCorp Vault** to:
   Vault issues OTPs for secure SSH access.
 
 - **Sign public keys for SSH login**:  
-  Vault signs SSH public keys, enabling certificate-based authentication for secure SSH logins. 
+  Vault signs SSH public keys, enabling certificate-based authentication for secure SSH logins without the need for distributing public SSH keys across environments.
 
 The project includes Docker configurations for both the PostgreSQL and SSH services, along with Vault integration to securely issue and manage credentials for these services.
 
