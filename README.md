@@ -24,24 +24,24 @@ Make sure you have the following installed:
 ## Directory Structure
 ```
 ├── postgres/
-│   ├── Dockerfile
-│   └── init-db.sql # Contains the Docker setup and initialization scripts for PostgreSQL.
+│   ├── Dockerfile # Dockerfile for building the PostgreSQL.
+│   └── init-db.sql # Contains initialization scripts for PostgreSQL.
 ├── ssh-server-otp-auth/
-│   ├── Dockerfile
-│   ├── config.hcl
+│   ├── Dockerfile # Dockerfile for building SSH server that uses OTP for authentication.
+│   ├── config.hcl # config for vault-ssh-helper which is used for connecting with vault server
 │   ├── sshd
-│   ├── sshd_config
-│   └── sshd_config_pass_otp .
+│   ├── sshd_config # Configuration file for the SSH server, enabling OTP authentication 
+│   └── sshd_config_pass_otp 
 ├── ssh-server-signed-cert-auth/
-│   ├── Dockerfile
-│   └── sshd_config # Sets up an SSH server with signed certificate authentication.
+│   ├── Dockerfile # Dockerfile for building SSH server that uses signed keys for authentication  
+│   └── sshd_config # Configuration file for the SSH server, enabling signed ssh key authentication 
 ├── vault/
 │   ├── config/
-│   │   └── vault.json
-│   ├── Dockerfile
-│   ├── setup_vault.sh 
-│   └── README.md # 
-└── docker-compose.yml # Orchestrates the multi-container Docker application setup.
+│   │   └── vault.json # Configuration file for Vault, specifying how Vault should operate.
+│   ├── Dockerfile # Dockerfile for building the Hashicorp Vault
+│   ├── setup_vault.sh # Initialization script for setting up Vault.
+│   └── README.md 
+└── docker-compose.yml # Orchestrates the multi-container Docker setup to run Postgres , Vault and ssh servers.
 ```
 
 ## Setting Up the Environment
