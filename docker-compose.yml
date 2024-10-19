@@ -16,12 +16,24 @@ services:
     networks:
       - vault-network
 
-  ssh-server:
+  ssh-server-otp-auth:
     build:
-      context: ./ssh-server
-    container_name: ssh-server
+      context: ./ssh-server-otp-auth
+    container_name: ssh-server-otp-auth
     ports:
-      - "3015:22"
+      - "3016:22"
+    networks:
+      - vault-network
+
+  ssh-server-signed-cert-auth:
+    build:
+      context: ./ssh-server-signed-cert-auth
+    container_name: ssh-server-signed-cert-auth
+    ports:
+      - "3021:22"
+    depends_on:
+      vault:
+        condition: service_started
     networks:
       - vault-network
  
