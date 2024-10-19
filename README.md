@@ -29,9 +29,8 @@ Make sure you have the following installed:
 ├── ssh-server-otp-auth/
 │   ├── Dockerfile # Dockerfile for building SSH server that uses OTP for authentication.
 │   ├── config.hcl # config for vault-ssh-helper which is used for connecting with vault server
-│   ├── sshd
+│   ├── sshd # PAM configuration for integrating Vault-based SSH authentication and session management.
 │   ├── sshd_config # Configuration file for the SSH server, enabling OTP authentication 
-│   └── sshd_config_pass_otp 
 ├── ssh-server-signed-cert-auth/
 │   ├── Dockerfile # Dockerfile for building SSH server that uses signed keys for authentication  
 │   └── sshd_config # Configuration file for the SSH server, enabling signed ssh key authentication 
