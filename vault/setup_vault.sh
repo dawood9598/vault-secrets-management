@@ -55,7 +55,7 @@ vault secrets enable -path=ssh-client-signer ssh
 # The key will be stored in Vault and used for authenticating SSH client sessions.
 vault write ssh-client-signer/config/ca generate_signing_key=true
 
-#The ssh-client-signer endpoint is used to sign SSH client certificates via Vault’s SSH secrets engine.
+#The ssh-client-signer endpoint is used to sign public keys via Vault’s SSH secrets engine.
 #allowed_extensions allows the certificate to grant permission for interactive shell access and port forwarding
 vault write ssh-client-signer/roles/ssh-user-cert-signer -<<"EOH"
 {
