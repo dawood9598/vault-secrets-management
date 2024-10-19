@@ -68,21 +68,21 @@ vault write ssh/creds/otp_key_role ip=<IP of ssh server container>
 
 By signing clients’ SSH keys, Vault facilitates secure and automated SSH access without the need for distributing public SSH keys across environments.
 
-### 1. Generate an RSA SSH Key Pair
+#### 1. Generate an RSA SSH Key Pair
 ```
 ssh-keygen -t rsa -b 2048 -f vault-test
 ```
 
-### 2. Sign the public SSH key using Vault's SSH client signer.
+#### 2. Sign the public SSH key using Vault's SSH client signer.
 ```
 vault write -field=signed_key ssh-client-signer/sign/ssh-user-cert-signer public_key=@vault-test.pub valid_principals=root > signed-cert.pub
 ```
-### 3. Fetch the public key from Vault's SSH client signer and store it in SSH server. This public key will be used by the SSH server to verify the authenticity of SSH certificates signed by Vault.
+#### 3. Fetch the public key from Vault's SSH client signer and store it in SSH server. This public key will be used by the SSH server to verify the authenticity of SSH certificates signed by Vault.
 ```
 curl -o /etc/ssh/trusted-user-ca-keys.pem http://vault:8200/v1/ssh-client-signer/public_key
 ```
 
-### 3. Use the signed certificate to authenticate as the root user on the target server
+#### 3. Use the signed certificate to authenticate as the root user on the target server
 ```
 ssh -i signed-cert.pub -i vault-test root@localhost -p 3021
 ```
