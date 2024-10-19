@@ -1,5 +1,5 @@
 # Vault Secrets Management
-This project sets up a secure secrets management solution using HashiCorp Vault to dynamically manage PostgreSQL credentials, generate one-time passwords (OTP) for SSH login, and sign SSH certificates for secure authentication. 
+This project sets up a secure secrets management solution using HashiCorp Vault to dynamically manage PostgreSQL credentials, generate one-time passwords (OTP) for SSH login, and sign public keys for SSH login. 
 
 The project includes Docker configurations for both the PostgreSQL and SSH services, along with Vault integration to securely issue and manage credentials for these services.
 
@@ -19,11 +19,12 @@ docker-compose up -d --build
 ```
 To set up Vault, run the initialization script:
 ```
+cd vault
 sh setup_vault.sh
 ```
 
 This script performs the following steps:
-1. Initialize Vault and generate unseal keys and root token, storing them in /vault/init.file.
+1. Initialize Vault and generate unseal keys and root token, storing them in init.file.
 2. Unseal Vault using the generated unseal keys.
 3. Log into Vault with the root token.
 4. Enable the SSH secrets engine and configure One-Time Password (OTP) SSH authentication.
@@ -31,7 +32,7 @@ This script performs the following steps:
 6. Create a Vault token for accessing SSH credentials.
 7. Enable the database secrets engine for Postgres.
 8. Configure Vault to manage Postgres with a readonly role.
-9. Configure the SSH secrets engine to sign SSH client certificates
+9. Configure the SSH secrets engine to sign public SSH key
 
 # Creating new vault admin user
 ```
