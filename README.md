@@ -1,5 +1,15 @@
 # Vault Secrets Management
-This project sets up a secure secrets management solution using HashiCorp Vault to dynamically manage PostgreSQL credentials, generate one-time passwords (OTP) for SSH login, and sign public keys for SSH login. 
+
+This project leverages **HashiCorp Vault** to:
+
+- **Dynamically manage PostgreSQL credentials**:  
+  Vault automatically generates and manages time-bound database credentials.
+
+- **Generate one-time passwords (OTP) for SSH login**:  
+  Vault issues OTPs for secure SSH access.
+
+- **Sign public keys for SSH login**:  
+  Vault signs SSH public keys, enabling certificate-based authentication for secure SSH logins. 
 
 The project includes Docker configurations for both the PostgreSQL and SSH services, along with Vault integration to securely issue and manage credentials for these services.
 
